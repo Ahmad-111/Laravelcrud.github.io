@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\areaController;
+use App\Http\Controllers\blockController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,20 +15,30 @@ use App\Http\Controllers\areaController;
 |
 */
 
-Route::get('/insertarea', function () {
-    return view('insertArea');
-});
+Route::resource('/area', areaController::class);
 
-// Route::get('/edit', function () {
-//     return view('editArea');
+
+Route::resource('/block', blockController::class);
+
+// Route::get('/block', function () {
+//     return view('showBlock');
+// });
+// Route::get('/blocks', function () {
+//     return view('insertBlock');
 // });
 
-Route::get('/',[areaController::class,'index'])->name('index');
+// Route::get('/insertarea', function () {
+//     return view('insertArea');
+// });
 
-Route::post('/insertarea',[areaController::class,'create'])->name('create_area');
+// Route::get('/',[areaController::class,'index'])->name('index');
 
-Route::get('/edit/{id}',[areaController::class,'edit'])->name('edit_area');
+// Route::post('/insertarea',[areaController::class,'create'])->name('create_area');
 
-Route::put('/edit/{id}',[areaController::class,'update'])->name('update_area');
+// Route::get('/edit/{id}',[areaController::class,'edit'])->name('edit_area');
 
-Route::get('/delete/{id}',[areaController::class,'destroy'])->name('destroy_area');
+// Route::put('/edit/{id}',[areaController::class,'update'])->name('update_area');
+
+// Route::get('/delete/{id}',[areaController::class,'destroy'])->name('destroy_area');
+
+
