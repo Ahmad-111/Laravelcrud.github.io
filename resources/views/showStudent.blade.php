@@ -25,6 +25,9 @@
             background-color: black;
             margin: auto;
             margin-top: 30px;
+        }
+        .create{
+            margin-left: 50px
         }*{
             padding: 0%;
             margin: 0%;
@@ -57,36 +60,45 @@
 <body>
     <nav class="navbar navbar-expand-sm  ">
         <ul class="navbar-nav nav-justified " >
-          {{-- <li><a class="nav-link " href="{{route('area.index')}}">Areas</a></li> --}}
+          <li><a class="nav-link " href="{{route('area.index')}}">Areas</a></li>
           <li><a class="nav-link" href="{{route('block.index')}}">Blocks</a></li>
-          <li><a class="nav-link" href="{{route('student.index')}}">Students</a></li>
+          {{-- <li><a class="nav-link" href="{{route('student.index')}}">Students</a></li> --}}
         </ul>
       </nav>
-
-    <h2 class="title text-light"><u>Area CRUD</u></h2>
-    <div class="container w-75 mt-5">
-        <a class="btn btn-primary btn-md" name="insert_area" href="{{route ('area.create')}}" role="button">Enter New Area</a>
+    <h2 class="title text-light"><u>Student CRUD</u></h2>
+    <div class="create fluid-container  mt-5">
+        <a class="btn btn-primary btn-md" name="insert_student" href="{{route ('student.create')}}" role="button">Enter New Student</a>
         <br>
     </div>
-    <div class="container mt-5">
+    <div class="fluid-container mt-5">
            <div class="row">
                 <div class="col">
                     <table class="table table-striped">
                         <thead class="thead-dark">
                             <tr>
-                                <th>Area ID</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Roll No</th>
+                                <th>Email</th>
+                                <th>Contact No</th>
                                 <th>Area Name</th>
+                                <th>Block Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($areas as $area)
+                            @foreach ($students as $student)
                                   <tr>
-                                    <td>{{ $area->id}}</td>
-                                    <td>{{ $area->area_name}}</td>
+                                    <td>{{ $student->id}}</td>
+                                    <td>{{ $student->student_name}}</td>
+                                    <td>{{ $student->roll_no}}</td>
+                                    <td>{{ $student->student_email}}</td>
+                                    <td>{{ $student->contact_no}}</td>
+                                    <td>{{ $student->area->area_name}}</td>
+                                    <td>{{ $student->block->block_name}}</td>
                               <td class="d-flex">
-                             <a class='btn btn-warning btn-sm text-align:center' href="{{route('area.edit',$area->id)}}" >Edit</a>
-                            <form action="{{route('area.destroy',$area->id)}}" method="POST">
+                             <a class='btn btn-warning btn-sm text-align:center' href="{{route('student.edit',$student->id)}}" >Edit</a>
+                            <form action="{{route('student.destroy',$student->id)}}" method="POST">
                             @csrf
                             @method('delete')
                              <button class="btn btn-danger btn-sm text-align:center" type="submit">Delete</button>

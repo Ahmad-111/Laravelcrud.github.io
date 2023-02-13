@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\areaController;
 use App\Http\Controllers\blockController;
+use App\Http\Controllers\studentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,9 @@ use App\Http\Controllers\blockController;
 
 Route::resource('/area', areaController::class);
 
-
 Route::resource('/block', blockController::class);
+
+Route::resource('/student', studentController::class);
 
 // Route::get('/block', function () {
 //     return view('showBlock');

@@ -24,7 +24,7 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
-                background-color: #dff9fb;
+                background-color: #feca57;
             }
             .btn {
             margin: 40px auto 20px;
@@ -34,49 +34,55 @@
             border: 1px solid black;
             cursor: pointer;
             margin-bottom: 10px;
-        }
-        .title {
+        }.title {
             /* border-radius: unset !important; */
             text-align: center;
-            /* font-weight: bold; */
+            font-weight: bold;
             font-style: italic;
             /* background-color: black; */
             margin: auto;
             margin-top: 80px;
         }
-        ::placeholder {
-            color: burlywood;
-           padding: 10px;
-        }
-
-      
-        </style>
+       </style>
     </head>
+
     <body class="antialiased">
-       <h2 class="title text-dark"><u>Enter New Block</u></h2>
-       <form method="POST" action="{{route('block.store')}}">
+       <h2 class="title text-dark"><u>Edit Student Record</u></h2>
+    <form method="POST" action="{{route('student.update',$student->id)}}">
         @csrf
-       <div class="row mt-5">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4 mt-5">
-        <select name="area_name" value="" class="form-control">
-            <option value="" selected="selected">Select Area</option>
-            @foreach ($areas as $area )
-            <option value="{{$area->id}}">{{$area->area_name}}</option>
-            @endforeach
+        @method('PUT')
+     
+    <div class="row mt-5">
+        <div class="col-sm-3"></div>
+            <div class="col-sm-6 mt-3">
+                <input type="text" name="student_name" class="form-control" value="{{$student->student_name}}">
+           </div>
+    </div>
     
-        </select>
-       </div>
-       </div>
-       <div>
-        <div class="row mt-5">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4 mt-5">
-        <input type="text" name="block_name" class="form-control" placeholder="Enter Block">
+    <div class="row mt-5">
+        <div class="col-sm-3"></div>
+            <div class="col-sm-6 mt-3">
+                <input type="text" name="roll_no" class="form-control" value="{{$student->roll_no}}">
+           </div>
     </div>
+
+    <div class="row mt-5">
+        <div class="col-sm-3"></div>
+            <div class="col-sm-6 mt-3">
+                <input type="text" name="student_email" class="form-control" value="{{$student->student_email}}">
+           </div>
     </div>
-        <button type="submit" name="Block_insert" class="btn btn-info"> Insert</button>
-       </div>
+
+    <div class="row mt-5">
+        <div class="col-sm-3"></div>
+            <div class="col-sm-6 mt-3">
+                <input type="text" name="contact_no" class="form-control" value="{{$student->contact_no}}">
+           </div>
+    </div>
+
+        <div>
+            <button type="submit" name="area_edit" class="btn btn-info mt-5"> Edit</button>
+        </div>
     </form>
     </body>
 </html>

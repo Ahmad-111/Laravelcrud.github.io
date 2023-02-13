@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Block;
+use App\Models\Student;
 use App\Models\Area;
+use App\Models\Block;
 
-class blockController extends Controller
+class studentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +16,8 @@ class blockController extends Controller
      */
     public function index()
     {
-        $blocks = Block::all();
-        return view('showBlock',compact('blocks'));
-
-        // $blocks = Block::with('area')->get();
-        // $areas = Area::with('block')->get();
-        // return view('showBlock',compact('blocks','areas'));
+        $students = Student::all();
+        return view('showStudent',['students'=>$students]);
     }
 
     /**
@@ -31,8 +28,8 @@ class blockController extends Controller
     public function create()
     {
         $areas=Area::all();
-        return view('insertBlock',['areas'=>$areas]);
-        //return view('insertBlock',compact('areas'));
+        $blocks=Block::all();
+        return view('createStudent',['areas'=>$areas],['blocks'=>$blocks]);
     }
 
     /**
@@ -43,12 +40,9 @@ class blockController extends Controller
      */
     public function store(Request $request)
     {
-        //Block::create($request->all());
-        $block = new Block;
-        $block->area_id = $request->area_name;
-        $block->block_name = $request->block_name;
-        $block->save();
-        return redirect(route('block.index'));
+        //
+        Student::create($request->all());
+        return redirect(route('student.index'));
     }
 
     /**
@@ -57,9 +51,9 @@ class blockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-       
+        //
     }
 
     /**
@@ -70,11 +64,9 @@ class blockController extends Controller
      */
     public function edit($id)
     {
-        $block = Block::find($id);
-        return view('editBlock',['block'=>$block]);
-        //$block = Block::where('id', $id)->first();
-        //return view('editBlock',compact('block'));
-        
+        //
+        $student = Student::find($id);
+        return view('editStudent',['student'=>$student]);
     }
 
     /**
@@ -84,15 +76,11 @@ class blockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Block $block)
+    public function update(Request $request, Student $student)
     {
-        $block->update($request->all());
-        return redirect(route('block.index'));
-        // $block = Block::where('id',$id)->first();
-        // $block->block_name = $request->block_name;
-        // $block->update();
-       //$block->update($request->all())::where('block_id',$id);
-       
+        //
+        $student->update($request->all());
+        return redirect(route('student.index'));
     }
 
     /**
@@ -104,8 +92,8 @@ class blockController extends Controller
     public function destroy($id)
     {
         //
-        $block = Block::find($id);
-        $block->delete();
-        return redirect(route('block.index'));
+        $student = Student::find($id);
+        $student->delete();
+        return redirect(route('student.index'));
     }
 }

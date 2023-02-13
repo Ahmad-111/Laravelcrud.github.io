@@ -24,7 +24,7 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
-                background-color: #dff9fb;
+                background-color: #feca57;
             }
             .btn {
             margin: 40px auto 20px;
@@ -44,38 +44,22 @@
             margin: auto;
             margin-top: 80px;
         }
-        ::placeholder {
-            color: burlywood;
-           padding: 10px;
-        }
-
-      
-        </style>
+       </style>
     </head>
+
     <body class="antialiased">
-       <h2 class="title text-dark"><u>Enter New Block</u></h2>
-       <form method="POST" action="{{route('block.store')}}">
+       <h2 class="title text-dark"><u>Edit Block</u></h2>
+       <form method="POST" action="{{route('block.update',$block->id)}}">
         @csrf
-       <div class="row mt-5">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4 mt-5">
-        <select name="area_name" value="" class="form-control">
-            <option value="" selected="selected">Select Area</option>
-            @foreach ($areas as $area )
-            <option value="{{$area->id}}">{{$area->area_name}}</option>
-            @endforeach
-    
-        </select>
-       </div>
-       </div>
+        @method('PUT')
        <div>
         <div class="row mt-5">
             <div class="col-sm-4"></div>
             <div class="col-sm-4 mt-5">
-        <input type="text" name="block_name" class="form-control" placeholder="Enter Block">
+        <input type="text" name="block_name" class="form-control" value="{{$block->block_name}}">
     </div>
     </div>
-        <button type="submit" name="Block_insert" class="btn btn-info"> Insert</button>
+        <button type="submit" name="area_edit" class="btn btn-info "> Edit</button>
        </div>
     </form>
     </body>
