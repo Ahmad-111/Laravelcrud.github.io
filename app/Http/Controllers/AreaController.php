@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Area; 
 
-class areaController extends Controller
+class AreaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class areaController extends Controller
     public function index()
     { 
         $areas = Area::all();
-        return view('showArea',['areas'=>$areas]);
+        return view('/Area/showArea',['areas'=>$areas]);
         //return view('showArea',compact('areas'));
         //return view('insert');
     }
@@ -27,7 +27,7 @@ class areaController extends Controller
      */
     public function create()
     {
-        return view('insertArea');
+        return view('/Area/insertArea');
         // $area = new Area;
         // $area->area_name = $request->name;
         // $area->save();
@@ -42,6 +42,12 @@ class areaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+              'area_name' => 'required'
+            ]
+        );
+
         Area::create($request->all());
          return redirect(route('area.index'));
     }
@@ -66,7 +72,7 @@ class areaController extends Controller
     public function edit($id)
     {
         $area = Area :: find($id);
-        return view('editArea',['area'=>$area]);
+        return view('/Area/editArea',['area'=>$area]);
         //return view('editArea',compact('area'));
     }
 

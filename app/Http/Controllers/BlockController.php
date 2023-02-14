@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Block;
 use App\Models\Area;
 
-class blockController extends Controller
+class BlockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class blockController extends Controller
     public function index()
     {
         $blocks = Block::all();
-        return view('showBlock',compact('blocks'));
+        return view('/Block/showBlock',compact('blocks'));
 
         // $blocks = Block::with('area')->get();
         // $areas = Area::with('block')->get();
@@ -31,7 +31,7 @@ class blockController extends Controller
     public function create()
     {
         $areas=Area::all();
-        return view('insertBlock',['areas'=>$areas]);
+        return view('/Block/insertBlock',['areas'=>$areas]);
         //return view('insertBlock',compact('areas'));
     }
 
@@ -71,7 +71,7 @@ class blockController extends Controller
     public function edit($id)
     {
         $block = Block::find($id);
-        return view('editBlock',['block'=>$block]);
+        return view('/Block/editBlock',['block'=>$block]);
         //$block = Block::where('id', $id)->first();
         //return view('editBlock',compact('block'));
         

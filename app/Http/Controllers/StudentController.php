@@ -7,7 +7,7 @@ use App\Models\Student;
 use App\Models\Area;
 use App\Models\Block;
 
-class studentController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class studentController extends Controller
     public function index()
     {
         $students = Student::all();
-        return view('showStudent',['students'=>$students]);
+        return view('/Student/showStudent',['students'=>$students]);
     }
 
     /**
@@ -27,9 +27,9 @@ class studentController extends Controller
      */
     public function create()
     {
-        $areas=Area::all();
-        $blocks=Block::all();
-        return view('createStudent',['areas'=>$areas],['blocks'=>$blocks]);
+        $areas= Area::all();
+        $blocks= Block::all();
+        return view('/Student/createStudent',['areas'=>$areas],['blocks'=>$blocks]);
     }
 
     /**
@@ -66,7 +66,7 @@ class studentController extends Controller
     {
         //
         $student = Student::find($id);
-        return view('editStudent',['student'=>$student]);
+        return view('/Student/editStudent',['student'=>$student]);
     }
 
     /**

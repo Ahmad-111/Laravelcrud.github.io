@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\areaController;
-use App\Http\Controllers\blockController;
-use App\Http\Controllers\studentController;
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\BlockController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +16,11 @@ use App\Http\Controllers\studentController;
 |
 */
 
-Route::resource('/area', areaController::class);
+Route::resource('/area', AreaController::class);
 
-Route::resource('/block', blockController::class);
+Route::resource('/block', BlockController::class);
 
-Route::resource('/student', studentController::class);
+Route::resource('/student', StudentController::class);
 
 // Route::get('/block', function () {
 //     return view('showBlock');
