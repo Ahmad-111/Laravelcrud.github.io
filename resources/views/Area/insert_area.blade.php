@@ -1,8 +1,8 @@
-@extends('/Header/CreateEdit')
+@extends('/Layout/Header')
 @section('title','Area CRUD')
 @section('body')
 
-       <h2 class="title text-dark"><u>Enter New Area</u></h2>
+       <h2 class="title text-light"><u>Enter New Area</u></h2>
        <form method="POST" action={{route('area.store')}}>
         @csrf
        <div>
@@ -17,7 +17,7 @@
         </span>
     </div>
     </div>
-        <button type="submit" name="area_insert" class="btn btn-info"> Insert</button>
+        <button type="submit" name="area_insert" class="insert btn-primary"> Insert</button>
        </div>
     </form>
 

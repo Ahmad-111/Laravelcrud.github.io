@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('student_name');
             $table->integer('roll_no');
             $table->string('student_email');
-            $table->integer('contact_no');
+            $table->unsignedBigInteger('contact_no');
             $table->unsignedBigInteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('block_id');

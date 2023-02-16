@@ -17,7 +17,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all();
-        return view('/Student/showStudent',['students'=>$students]);
+        return view('Student.show_student',compact('students'));
     }
 
     /**
@@ -29,7 +29,17 @@ class StudentController extends Controller
     {
         $areas= Area::all();
         $blocks= Block::all();
-        return view('/Student/createStudent',['areas'=>$areas],['blocks'=>$blocks]);
+        return view('Student.insert_student',compact('areas','blocks'));
+    }
+
+    public function fetchBlocks(Request $request){
+
+        $area_id = $request->area;
+        $blocks = Block::where('area_id',$area_id)->get();
+        
+        return response()->json([
+            'blocks'=>$blocks
+        ]);
     }
 
     /**
@@ -41,19 +51,18 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate(
+            [
+              'student_name' => 'required|regex:/^[a-zA-Z\s]*$/',
+              'roll_no' => 'required|numeric',
+              'student_email' => 'required|unique:students,student_email|email',
+              'contact_no' => 'required|numeric|min_digits:11|max_digits:11',
+              'area_id' => 'required',
+              'block_id' => 'required'
+            ]
+        );
         Student::create($request->all());
         return redirect(route('student.index'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -66,7 +75,9 @@ class StudentController extends Controller
     {
         //
         $student = Student::find($id);
-        return view('/Student/editStudent',['student'=>$student]);
+        $areas = Area::all();
+        $blocks=Block::where('area_id',$student->area_id)->get();
+        return view('Student.update_student',compact('student','areas','blocks'));
     }
 
     /**
@@ -79,6 +90,16 @@ class StudentController extends Controller
     public function update(Request $request, Student $student)
     {
         //
+        $request->validate(
+            [
+              'student_name' => 'required|regex:/^[a-zA-Z\s]*$/',
+              'roll_no' => 'required|numeric',
+              'student_email' => 'required|unique:students,student_email|email',
+              'contact_no' => 'required|numeric|min_digits:10',
+              'area_id' => 'required',
+              'block_id' => 'required'
+            ]
+        );
         $student->update($request->all());
         return redirect(route('student.index'));
     }

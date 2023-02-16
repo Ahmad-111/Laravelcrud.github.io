@@ -15,9 +15,7 @@ class AreaController extends Controller
     public function index()
     { 
         $areas = Area::all();
-        return view('/Area/showArea',['areas'=>$areas]);
-        //return view('showArea',compact('areas'));
-        //return view('insert');
+        return view('Area.show_area',['areas'=>$areas]);
     }
 
     /**
@@ -27,11 +25,7 @@ class AreaController extends Controller
      */
     public function create()
     {
-        return view('/Area/insertArea');
-        // $area = new Area;
-        // $area->area_name = $request->name;
-        // $area->save();
-        // return redirect(route('index'));
+        return view('Area.insert_area');
     }
 
     /**
@@ -44,23 +38,12 @@ class AreaController extends Controller
     {
         $request->validate(
             [
-              'area_name' => 'required'
+              'area_name' => 'required|unique:areas,area_name|regex:/^[a-zA-Z\s]*$/'
             ]
         );
 
         Area::create($request->all());
          return redirect(route('area.index'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -72,8 +55,7 @@ class AreaController extends Controller
     public function edit($id)
     {
         $area = Area :: find($id);
-        return view('/Area/editArea',['area'=>$area]);
-        //return view('editArea',compact('area'));
+        return view('Area.update_area',['area'=>$area]);
     }
 
     /**
@@ -85,12 +67,13 @@ class AreaController extends Controller
      */
     public function update(Request $request, area $area)
     {
+        $request->validate(
+            [
+              'area_name' => 'required|unique:areas,area_name|regex:/^[a-zA-Z\s]*$/'
+            ]
+        );
         $area->update($request->all());
-        return redirect(route('area.index'));
-        // $area = Area :: find($id);
-        // $area->area_name = $request->name;
-        // $area->save();
-        
+        return redirect(route('area.index'));    
     }
 
     /**

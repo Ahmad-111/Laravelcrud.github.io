@@ -1,6 +1,6 @@
-   @extends('/Header/show')
-   @section('title','Area CRUD')
-   @section('body')
+@extends('/Layout/Header')
+@section('title','Area CRUD')
+@section('body')
 
     <h2 class="title text-light"><u>Area CRUD</u></h2>
     <div class="container w-75 mt-5">

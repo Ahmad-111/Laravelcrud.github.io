@@ -16,11 +16,7 @@ class BlockController extends Controller
     public function index()
     {
         $blocks = Block::all();
-        return view('/Block/showBlock',compact('blocks'));
-
-        // $blocks = Block::with('area')->get();
-        // $areas = Area::with('block')->get();
-        // return view('showBlock',compact('blocks','areas'));
+        return view('Block.show_block',compact('blocks'));
     }
 
     /**
@@ -31,8 +27,7 @@ class BlockController extends Controller
     public function create()
     {
         $areas=Area::all();
-        return view('/Block/insertBlock',['areas'=>$areas]);
-        //return view('insertBlock',compact('areas'));
+        return view('Block.insert_block',['areas'=>$areas]);
     }
 
     /**
@@ -43,23 +38,18 @@ class BlockController extends Controller
      */
     public function store(Request $request)
     {
-        //Block::create($request->all());
+
+        $request->validate(
+            [
+              'area_name' => 'required',
+              'block_name' => 'required|unique:blocks,block_name|regex:/^[a-zA-Z\s]*$/'
+            ]
+        );
         $block = new Block;
         $block->area_id = $request->area_name;
         $block->block_name = $request->block_name;
         $block->save();
         return redirect(route('block.index'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-       
     }
 
     /**
@@ -71,9 +61,8 @@ class BlockController extends Controller
     public function edit($id)
     {
         $block = Block::find($id);
-        return view('/Block/editBlock',['block'=>$block]);
-        //$block = Block::where('id', $id)->first();
-        //return view('editBlock',compact('block'));
+        $areas=Area::all();
+        return view('Block.update_block' , ['block'=> $block] , ['areas'=> $areas]);
         
     }
 
@@ -86,14 +75,15 @@ class BlockController extends Controller
      */
     public function update(Request $request, Block $block)
     {
-        $block->update($request->all());
-        return redirect(route('block.index'));
-        // $block = Block::where('id',$id)->first();
-        // $block->block_name = $request->block_name;
-        // $block->update();
-       //$block->update($request->all())::where('block_id',$id);
-       
-    }
+        $request->validate(
+            [
+              'area_id' => 'required',
+              'block_name' => 'required|regex:/^[a-zA-Z\s]*$/'
+            ]
+        );
+         $block->update($request->all());
+         return redirect(route('block.index'));
+     }
 
     /**
      * Remove the specified resource from storage.

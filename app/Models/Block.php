@@ -21,5 +21,9 @@ class Block extends Model
     {
         return $this->belongsTo(Area::class,'area_id','id');
     }
-    
+ 
+    public function student()
+    {
+     return $this->hasMany(Student::class,'block_id','id');
+    }
 }

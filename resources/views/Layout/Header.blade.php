@@ -13,6 +13,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <style>
         .create{
@@ -33,10 +36,8 @@
         }.navbar{
             background-color: white;
             height: 68px;
-           /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
-            /* box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px; */
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-          }.nav-link{
+        }.nav-link{
             padding: 3px 3px;
             text-decoration: none;
             color: black; 
@@ -52,7 +53,24 @@
             gap: 60px ;
             margin-left: 30px;
             /* font-weight: bold; */
-        }
+        }.insert {
+            margin: 40px auto 20px;
+            width: 25%;
+            display: block;
+            padding: 10px 0;
+            border: 1px solid black;
+            cursor: pointer;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            background-color: #0652DD;
+            /* font-weight: bold; */
+        } .error{
+            color: red;
+            font-style: italic;
+            /* font-weight: bold; */
+            padding: 15px;
+            margin-top: 40px;
+           }
     </style>
 
 <body>
@@ -65,10 +83,6 @@
       </nav>
 
       @yield('body');
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

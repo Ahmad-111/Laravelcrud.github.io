@@ -1,4 +1,4 @@
-@extends('/Header/show')
+@extends('/Layout/Header')
 @section('title','Student CRUD')
 @section('body')
 
