@@ -82,7 +82,7 @@
         </ul>
       </nav>
 
-      @yield('body');
+      @yield('body')
 
 </body>
 </html>

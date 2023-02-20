@@ -16,7 +16,7 @@ use App\Http\Controllers\StudentController;
 |
 */
 
-Route::resource('/area', AreaController::class);
+Route::resource('/area', AreaController::class)->middleware('auth');
 
 Route::resource('/block', BlockController::class);
 
@@ -25,5 +25,18 @@ Route::resource('/student', StudentController::class);
 Route::post('/fetchblocks',[StudentController::class,'fetchBlocks']);
 
 
+Route::get('/', function () {
+    return view('landing');
+});
 
 
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

@@ -94,7 +94,7 @@ class StudentController extends Controller
             [
               'student_name' => 'required|regex:/^[a-zA-Z\s]*$/',
               'roll_no' => 'required|numeric',
-              'student_email' => 'required|unique:students,student_email|email',
+              'student_email' => 'required|email',
               'contact_no' => 'required|numeric|min_digits:10',
               'area_id' => 'required',
               'block_id' => 'required'
