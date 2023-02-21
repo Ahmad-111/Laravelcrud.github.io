@@ -1,6 +1,7 @@
 @extends('/Layout/Header')
 @section('title','Area CRUD')
-@section('body')
+{{-- @section('body') --}}
+<x-app-layout>
 
        <h2 class="title text-light"><u>Update Area</u></h2>
        <form method="POST" action="{{route('area.update',$area->id)}}">
@@ -22,4 +23,5 @@
        </div>
     </form>
 
-@endsection
+</x-app-layout>
+{{-- @endsection --}}

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\BlockController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\morphController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,18 +19,20 @@ use App\Http\Controllers\StudentController;
 
 Route::resource('/area', AreaController::class)->middleware('auth');
 
-Route::resource('/block', BlockController::class);
+Route::resource('/block', BlockController::class)->middleware('auth');
 
-Route::resource('/student', StudentController::class);
+Route::resource('/student', StudentController::class)->middleware('auth');
 
 Route::post('/fetchblocks',[StudentController::class,'fetchBlocks']);
+
+Route::get('/post',[morphController::class,'show_post']);
+
+Route::get('/image',[morphController::class,'show_image']);
 
 
 Route::get('/', function () {
     return view('landing');
 });
-
-
 
 Route::middleware([
     'auth:sanctum',

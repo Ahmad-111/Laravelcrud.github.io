@@ -1,7 +1,7 @@
-@extends('/Layout/Header')
+ @extends('/Layout/Header')
 @section('title','Area CRUD')
-@section('body')
-
+{{-- @section('body') --}}
+<x-app-layout>
     <h2 class="title text-light"><u>Area CRUD</u></h2>
     <div class="container w-75 mt-5">
         <a class="btn btn-primary btn-md" name="insert_area" href="{{route ('area.create')}}" role="button">Enter New Area</a>
@@ -41,4 +41,5 @@
             </div>
     </div>
 
-@endsection
+</x-app-layout>
+{{-- @endsection --}}

@@ -1,8 +1,8 @@
 @extends('/Layout/Header')
 @section('title','Student CRUD')
-@section('body')
+{{-- @section('body') --}}
 
-
+<x-app-layout>
     <h2 class="title text-light"><u>Student CRUD</u></h2>
     <div class="create fluid-container  mt-5">
         <a class="btn btn-primary btn-md" name="insert_student" href="{{route ('student.create')}}" role="button">Enter New Student</a>
@@ -52,4 +52,5 @@
             </div>
     </div>
 
-@endsection
+</x-app-layout>
+{{-- @endsection --}}

@@ -1,8 +1,8 @@
 @extends('/Layout/Header')
 @section('title', 'Block CRUD')
-@section('body')
+{{-- @section('body') --}}
 
-
+<x-app-layout>
     <h2 class="title text-light"><u>Update Block</u></h2>
     <form method="POST" action="{{ route('block.update', $block->id) }}">
         @csrf
@@ -44,4 +44,5 @@
         </div>
     </form>
 
-@endsection
+</x-app-layout>
+{{-- @endsection --}}

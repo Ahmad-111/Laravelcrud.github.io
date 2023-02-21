@@ -1,7 +1,8 @@
 @extends('/Layout/Header')
 @section('title','Block CRUD')
-@section('body')
+{{-- @section('body') --}}
 
+<x-app-layout>
     <h2 class="title text-light"><u>Block CRUD</u></h2>
     <div class="container w-75 mt-5">
 
@@ -44,4 +45,5 @@
             </div>
          </div>
 
- @endsection
+</x-app-layout>
+ {{-- @endsection --}}

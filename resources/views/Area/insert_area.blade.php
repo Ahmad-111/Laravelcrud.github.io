@@ -1,7 +1,7 @@
 @extends('/Layout/Header')
 @section('title','Area CRUD')
-@section('body')
-
+{{-- @section('body') --}}
+<x-app-layout>
        <h2 class="title text-light"><u>Enter New Area</u></h2>
        <form method="POST" action={{route('area.store')}}>
         @csrf
@@ -20,5 +20,5 @@
         <button type="submit" name="area_insert" class="insert btn-primary"> Insert</button>
        </div>
     </form>
-
-@endsection
+</x-app-layout>
+{{-- @endsection --}}

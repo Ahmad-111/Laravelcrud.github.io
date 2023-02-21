@@ -8,12 +8,34 @@
                     <a href="{{ route('dashboard') }}">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
+                    
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('area.index') }}" :active="request()->routeIs('area.index')">
+                        {{ __('Area') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('block.index') }}" :active="request()->routeIs('block.index')">
+                        {{ __('Block') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('student.index') }}" :active="request()->routeIs('student.index')">
+                        {{ __('Student') }}
+                    </x-nav-link>
+                    {{-- <x-nav-link href="{{ route('post.show_post') }}" :active="request()->routeIs('post.show_post')">
+                        {{ __('Post') }}
+                    </x-nav-link> --}}
+                    {{-- <x-nav-link href="{{ route('image') }}" :active="request()->routeIs('image')">
+                        {{ __('Image') }}
+                    </x-nav-link> --}}
+                    <x-nav-link href="{{ url('/post') }}">
+                        {{ __('Post') }}
+                    </x-nav-link>
+                     <x-nav-link href="{{ url('/image') }}">
+                        {{ __('Image') }}
                     </x-nav-link>
                 </div>
             </div>

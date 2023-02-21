@@ -29,11 +29,13 @@
             background-color: black;
             margin: auto;
             margin-top: 30px;
-        }*{
+        }
+        /* *{
             padding: 0%;
             margin: 0%;
             box-sizing: border-box;
-        }.navbar{
+        } */
+        /* .navbar{
             background-color: white;
             height: 68px;
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -52,8 +54,9 @@
             align-items: center !important;
             gap: 60px ;
             margin-left: 30px;
-            /* font-weight: bold; */
-        }.insert {
+            font-weight: bold;
+        } */
+        .insert {
             margin: 40px auto 20px;
             width: 25%;
             display: block;
@@ -63,8 +66,9 @@
             margin-bottom: 10px;
             border-radius: 10px;
             background-color: #0652DD;
-            /* font-weight: bold; */
-        } .error{
+            font-weight: bold;
+        }
+         .error{
             color: red;
             font-style: italic;
             /* font-weight: bold; */
@@ -74,13 +78,13 @@
     </style>
 
 <body>
-    <nav class="navbar navbar-expand-sm  ">
+    {{-- <nav class="navbar navbar-expand-sm  ">
         <ul class="navbar-nav nav-justified " >
           <li><a class="nav-link " href="{{route('area.index')}}">Areas</a></li>
           <li><a class="nav-link" href="{{route('block.index')}}">Blocks</a></li>
           <li><a class="nav-link" href="{{route('student.index')}}">Students</a></li>
         </ul>
-      </nav>
+      </nav> --}}
 
       @yield('body')
 

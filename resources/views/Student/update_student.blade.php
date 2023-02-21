@@ -1,13 +1,14 @@
 @extends('/Layout/Header')
 @section('title', 'Student CRUD')
-@section('body')
+{{-- @section('body') --}}
 
+<x-app-layout>
     <h2 class="title text-light"><u>Update Student Record</u></h2>
     <form method="POST" action="{{ route('student.update', $student->id) }}">
         @csrf
         @method('PUT')
 
-        <div class="row mt-5">
+        <div class="row mt-4">
             <div class="col-sm-3"></div>
             <div class="col-sm-6 mt-3">
                 <input type="text" name="student_name" class="form-control" value="{{ $student->student_name }}">
@@ -19,7 +20,7 @@
             </div>
         </div>
 
-        <div class="row mt-3">
+        <div class="row mt-2">
             <div class="col-sm-3"></div>
             <div class="col-sm-6 mt-3">
                 <input type="text" name="roll_no" class="form-control" value="{{ $student->roll_no }}">
@@ -31,7 +32,7 @@
             </div>
         </div>
 
-        <div class="row mt-3">
+        <div class="row mt-2">
             <div class="col-sm-3"></div>
             <div class="col-sm-6 mt-3">
                 <input type="text" name="student_email" class="form-control" value="{{ $student->student_email }}">
@@ -43,7 +44,7 @@
             </div>
         </div>
 
-        <div class="row mt-3">
+        <div class="row mt-2">
             <div class="col-sm-3"></div>
             <div class="col-sm-6 mt-3">
                 <input type="text" name="contact_no" class="form-control" value="{{ $student->contact_no }}">
@@ -56,8 +57,8 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-3 mt-5"></div>
-            <div class="col-sm-3 mt-5">
+            <div class="col-sm-3 mt-4"></div>
+            <div class="col-sm-3 mt-4">
                 <select name="area_id" class="form-control" id="area">
                     <option value="" selected="selected">Select Area</option>
                     @foreach ($areas as $area)
@@ -71,7 +72,7 @@
                     @enderror
                 </span>
             </div>
-            <div class="col-sm-3 mt-5">
+            <div class="col-sm-3 mt-4">
                 <select name="block_id" class="form-control" id="block">
                     @foreach ($blocks as $block)
                         <option value="{{ $block->id }}"@if ($student->block_id == $block->id) selected @endif>
@@ -122,4 +123,5 @@
         });
     </script>
 
-@endsection
+</x-app-layout>
+{{-- @endsection --}}

@@ -1,7 +1,7 @@
 @extends('/Layout/Header')
 @section('title','Block CRUD')
-@section('body')
-
+{{-- @section('body') --}}
+<x-app-layout>
 
        <h2 class="title text-light"><u>Enter New Block</u></h2>
        <form method="POST" action="{{route('block.store')}}">
@@ -39,4 +39,5 @@
        </div>
     </form>
 
-@endsection
+</x-app-layout>
+{{-- @endsection --}}
