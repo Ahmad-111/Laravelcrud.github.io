@@ -5,6 +5,7 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\BlockController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\morphController;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,13 @@ Route::resource('/student', StudentController::class)->middleware('auth');
 
 Route::post('/fetchblocks',[StudentController::class,'fetchBlocks']);
 
-Route::get('/post',[morphController::class,'show_post']);
+Route::get('/post',[morphController::class,'viewPost']);
+Route::get('post/{id}',[morphController::class,'postId']);
+Route::post('post/{posts:id}',[morphController::class,'createComment']);
 
-Route::get('/image',[morphController::class,'show_image']);
+Route::get('/image',[ImageController::class,'viewImage']);
+Route::get('image/{id}',[ImageController::class,'imageId']);
+Route::post('image/{images:id}',[ImageController::class,'createComment']);
 
 
 Route::get('/', function () {

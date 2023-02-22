@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\post;
+use App\Models\Comment;
+
 
 class morphController extends Controller
 {
@@ -11,15 +14,22 @@ class morphController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show_post()
+    public function viewPost()
     { 
-       
-        return view('uploaded_post');
+        $posts = post::all();
+        return view('post.uploaded_post',compact('posts'));
     }
 
-    public function show_image()
-    { 
-       
-        return view('uploaded_image');
+    public function postId($id)
+    {
+        $posts=post::find($id);
+        $comments=Comment::where('commentable_id',$posts->id)->where('commentable_type','App\Models\post')->get();
+        return view('post.create_comment',compact('posts','comments'));
+    }
+
+    public function createComment(Request $request, post $posts )
+    {
+        $posts->comments()->create($request->all());
+        return redirect(url('/post'));
     }
 }

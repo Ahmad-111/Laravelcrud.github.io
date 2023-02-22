@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->text('body');
             $table->morphs('commentable');
+            // $table->unsignedBigInteger('commentable_id');
+            // $table->string('commentable_type');
             $table->timestamps();
         });
     }

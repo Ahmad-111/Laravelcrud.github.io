@@ -75,6 +75,27 @@
             padding: 15px;
             margin-top: 40px;
            }
+        .label{
+            color: #5f27cd;
+            padding:20px;
+            margin-left: 30%;
+            font-weight: bolder;
+            font-family: italic;
+            /* margin-left: auto;
+            margin-right: auto; */
+        }
+        .comentlabel{
+            margin-left:4%;
+        }
+        input{
+            margin-left: 2%
+        }
+        .btn{
+            margin-left: 6%
+        }
+       img{
+        margin-left: 240%
+       }
     </style>
 
 <body>
