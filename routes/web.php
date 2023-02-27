@@ -1,11 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\BlockController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\morphController;
 use App\Http\Controllers\ImageController;
+use App\Mail\mail_queue;
+use App\Mail\mail_queue_job;
+use App\Jobs\send_mail_to_user;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +44,19 @@ Route::post('image/{images:id}',[ImageController::class,'createComment']);
 Route::get('/', function () {
     return view('landing');
 });
+
+Route::get('/mail',function(){
+   
+   dispatch(new send_mail_to_user());
+   echo"Mail sent";
+});
+
+// Route::get('/mail',function(){
+   
+//     Mail::to("test.user@gmail.com")
+//     ->send(new mail_queue());
+//     return view('send_mail');
+// });
 
 Route::middleware([
     'auth:sanctum',

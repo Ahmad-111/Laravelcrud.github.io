@@ -23,7 +23,8 @@ class morphController extends Controller
     public function postId($id)
     {
         $posts=post::find($id);
-        $comments=Comment::where('commentable_id',$posts->id)->where('commentable_type','App\Models\post')->get();
+        $comments=$posts->comments()->get();
+        //$comments=Comment::where('commentable_id',$posts->id)->where('commentable_type','App\Models\post')->get();
         return view('post.create_comment',compact('posts','comments'));
     }
 

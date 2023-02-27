@@ -23,7 +23,8 @@ class ImageController extends Controller
     public function imageId($id)
     {
         $images=Image::find($id);
-        $comments=Comment::where('commentable_id',$images->id)->where('commentable_type','App\Models\Image')->get();
+        $comments=$images->comments()->get();
+        //$comments=Comment::where('commentable_id',$images->id)->where('commentable_type','App\Models\Image')->get();
         return view('Image.create_comment',compact('images','comments'));
     }
 
